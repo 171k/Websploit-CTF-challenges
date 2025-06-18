@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaky Leaderboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press+Start+2P', cursive;
+            background-color: #1a1a2e;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 2em;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 2em;
+            background-color: #16213e;
+            border: 4px solid #0f3460;
+            border-radius: 15px;
+        }
+        h1 {
+            color: #50c878; /* Neon Green */
+            text-shadow: 2px 2px #000;
+        }
+        form { margin: 2em 0; }
+        input[type="text"] {
+            padding: 12px;
+            width: 50%;
+            background-color: #0f3460;
+            border: 2px solid #50c878;
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 12px 20px;
+            background-color: #50c878;
+            border: none;
+            color: #1a1a2e;
+            font-family: 'Press Start 2P', cursive;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .results-box, .error-box {
+            margin-top: 2em;
+            padding: 1.5em;
+            background-color: #0f3460;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .error-box {
+            background-color: #5c1c24;
+            color: #ffb5b5;
+            border: 2px dashed #e94560;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            border: 2px solid #50c878;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏆 Leaky Leaderboard 🏆</h1>
+        <p>Enter a player's rank to see their score.</p>
+        <form method="post">
+            <input type="text" name="player_rank" placeholder="Enter Player Rank..." value="{{ last_input }}">
+            <input type="submit" value="Look Up">
+        </form>
+
+        {% if error %}
+            <div class="error-box">
+                <strong>Error:</strong><br>{{ error }}
+            </div>
+        {% endif %}
+
+        {% if results %}
+            <div class="results-box">
+                <table>
+                    <tr><th>Rank</th><th>Username</th><th>Score</th></tr>
+                    {% for row in results %}
+                    <tr>
+                        <td>{{ row['rank'] }}</td>
+                        <td>{{ row['username'] }}</td>
+                        <td>{{ row['score'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

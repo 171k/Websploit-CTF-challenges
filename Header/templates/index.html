@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding HTTP Headers | WebBytes</title>
+  <meta name="description" content="Learn about HTTP headers, how they work, and why they're important.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f9ff;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0066cc;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    main {
+      max-width: 850px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    h2 {
+      color: #004d99;
+      margin-top: 2rem;
+    }
+    pre {
+      background: #eef5ff;
+      padding: 1em;
+      border-left: 4px solid #3399ff;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+    code {
+      background: #e8f0fe;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    .fun-facts {
+      background: #fff8e1;
+      border-left: 4px solid #ffca28;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 2rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Understanding HTTP Headers</h1>
+    <p>A deep dive into how the web communicates behind the scenes.</p>
+  </header>
+
+  <main>
+    <p>
+      HTTP headers are metadata sent with every HTTP request and response. They carry key-value pairs that give browsers and servers extra context about what's being transferred.
+    </p>
+
+    <h2>Types of Headers</h2>
+    <ul>
+      <li><strong>General Headers:</strong> Apply to both request and response messages.</li>
+      <li><strong>Request Headers:</strong> Sent by the client (e.g. <code>User-Agent</code>, <code>Accept</code>).</li>
+      <li><strong>Response Headers:</strong> Sent by the server (e.g. <code>Server</code>, <code>Set-Cookie</code>).</li>
+      <li><strong>Entity Headers:</strong> Provide information about the body (e.g. <code>Content-Type</code>).</li>
+    </ul>
+
+    <h2>Example: Response Headers</h2>
+    <pre>
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 3056
+X-Powered-By: Express
+X-Flag: ? 😉
+    </pre>
+
+    <h2>Inspecting HTTP Headers</h2>
+    <p>You can view HTTP headers in several ways:</p>
+    <ul>
+      <li>📦 Using browser dev tools (F12 → Network tab → click a request → Headers)</li>
+      <li>🧰 Using terminal tools like:
+        <pre>curl -I https://example.com</pre>
+      </li>
+      <li>🌐 Using browser extensions like “Live HTTP Headers”</li>
+    </ul>
+
+    <h2>Custom Headers</h2>
+    <p>Developers often use <code>X-*</code> headers for custom purposes, like debugging, tracking, or even easter eggs 😏</p>
+
+    <div class="fun-facts">
+      <h2>🔎 Fun Facts</h2>
+      <ul>
+        <li>The infamous <code>X-Clacks-Overhead: GNU Terry Pratchett</code> header is a tribute to author Terry Pratchett (<a href="https://www.ianvisits.co.uk/articles/gnu-terry-pratchett-12332/" target="_blank">source</a>).</li>
+        <li>Some CDNs inject headers like <code>X-Cache: HIT</code> to indicate caching behavior (<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Cache" target="_blank">MDN</a>).</li>
+        <li>Custom headers like <code>X-Debug</code> or <code>X-Beta-User</code> are often used internally by dev teams.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 171k — Created for educational and CTF purposes.
+  </footer>
+</body>
+</html>

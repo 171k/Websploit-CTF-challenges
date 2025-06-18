@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Search Results</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f8cdda, #1d2b64);
+      color: #ffffff;
+      text-align: center;
+      padding: 50px;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
+    }
+
+    .result-box {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 2em;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px #ff69b4;
+    }
+
+    p {
+      font-size: 1.3em;
+      color: #ffd1e9;
+      word-wrap: break-word;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 15px 0;
+      color: #ddd;
+      font-size: 0.9em;
+      opacity: 0.8;
+      text-align: center;
+    }
+  </style>
+</head>
+<html>
+<body>
+  <h2>Search Results</h2>
+  <div class="result-box">
+    {% autoescape false %}
+    <p>You searched for: {{ user_input }}</p>
+    {% endautoescape %}
+  </div>
+  <p><a href="/">Return to the search page</a></p>
+</body>
+</html>

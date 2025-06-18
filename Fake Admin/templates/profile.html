@@ -1,0 +1,85 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile - {{ username|e }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+ Aqil's CSS -->
+  <!---  <style>    
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+            text-align: center;
+        }
+        .profile-card {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .flag {
+            font-weight: bold;
+            color: #d6336c;
+            background: #fff0f5;
+            padding: 8px;
+            border-radius: 6px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style> -->
+
+<!-- 
+<body>
+    <div class="profile-card">
+        <h2>Welcome, {{ username|e }}</h2>
+        <p><strong>Email:</strong> {{ email|e }}</p>
+
+        {% if exposed_flag %}
+            <p><strong>Something leaked on this profile...</strong></p>
+            <p class="flag">{{ exposed_flag|e }}</p>
+        {% else %}
+            <p><em>Nothing suspicious here.</em></p>
+        {% endif %}
+
+        <a href="/">← Back to Home</a>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>User Profile - {{ username|e }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="center profile-card">
+            <h2 class="title">Welcome, {{ username|e }}</h2>
+            <p class="info"><strong>Email:</strong> {{ email|e }}</p>
+
+            <p class="info"><em>No secrets exposed. All looks good!</em></p>
+
+            <p class="info">
+                 Cookie says you're: 
+                <strong class="highlight">{{ request.cookies.get('username') }}</strong>
+            </p>
+
+            <a href="{{ url_for('index') }}" class="link">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
+

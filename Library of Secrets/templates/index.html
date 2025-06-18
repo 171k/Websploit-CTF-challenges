@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library of Secrets</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 2em;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            padding: 2em;
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            text-align: center;
+            color: #bb86fc;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2em;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            border: 2px solid #333;
+            border-radius: 5px 0 0 5px;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #bb86fc;
+            color: #121212;
+            border: 2px solid #bb86fc;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .error {
+            color: #cf6679;
+            font-weight: bold;
+            text-align: center;
+        }
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5em;
+            margin-top: 2em;
+        }
+        .book-card {
+            background-color: #2c2c2c;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+        .book-card img {
+            width: 100%;
+            height: 280px; 
+            object-fit: cover; 
+            display: block;
+        }
+        .book-card-content {
+            padding: 1em;
+        }
+        .book-card h3 {
+            margin-top: 0;
+            font-size: 1.1em;
+            color: #bb86fc;
+        }
+        .book-card p {
+            font-size: 0.9em;
+            color: #b0b0b0;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/static/buku.png" alt="Library Banner" style="display: block; margin: 0 auto 1em; max-width: 100%; border-radius: 12px;">
+        <h2>📚 Library of Secrets 🤫</h2>
+        <form method="post">
+            <input type="text" name="book_id" placeholder="Enter Book ID..." value="{{ last_input }}">
+            <input type="submit" value="Search">
+        </form>
+
+        {% if results %}
+            {% if results is string %}
+                <p class="error">{{ results }}</p>
+            {% else %}
+                <div class="book-grid">
+                    {% for row in results %}
+                    <div class="book-card">
+                        <img src="{{ row['image_url'] }}" alt="Cover for {{ row['title'] }}">
+                        <div class="book-card-content">
+                            <h3>{{ row['title'] }}</h3>
+                            <p><strong>ID:</strong> {{ row['id'] }}</p>
+                            <p>{{ row['description'] }}</p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p>No book found with that ID.</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
