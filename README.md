@@ -1,5 +1,9 @@
 # Websploit-CTF-challenges
 This is collection of web challenges made for our ACS EDU project
+Some were made with php, some were python
+
+website link:
+http://acswebsploit.xyz/challenges
 
 ## Authors
 
@@ -11,6 +15,3 @@ This is collection of web challenges made for our ACS EDU project
 - **astuteboy** - Aqil  
 - **sani** - Ahtsani  
 - **fakhrul** - Fakhrul
-
-website link:
-http://acswebsploit.xyz/challenges
